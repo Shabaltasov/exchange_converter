@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {ExchangeRateInterface} from "../../interfaces/currency";
-import {Subject} from "rxjs";
+import {Subject, takeUntil} from "rxjs";
 import {CurrencyService} from "../../services/currency.service";
 
 @Component({
@@ -31,11 +31,13 @@ export class HeaderComponent implements OnInit {
 
   public getCurrencyToHeader(): void {
     this.currencyService.getExchangeToHeader('USD', 'UAH', 1)
+      .pipe(takeUntil(this.destroy$))
       .subscribe(response => {
         this.exchangeRatesUsd = response;
         console.log(this.exchangeRatesUsd)
       });
     this.currencyService.getExchangeToHeader('EUR', 'UAH', 1)
+      .pipe(takeUntil(this.destroy$))
       .subscribe(response => {
         this.exchangeRatesEur = response;
         console.log(this.exchangeRatesEur)
