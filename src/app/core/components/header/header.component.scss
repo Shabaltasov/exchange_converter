@@ -1,0 +1,25 @@
+.header {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  position: relative;
+  background: linear-gradient(94deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  box-shadow: 0 7px 5px 0 rgba(0,0,0,0.63);
+
+  &-title {
+    font-size: 50px;
+    font-style: italic;
+  }
+
+  &-current-exchange-rate {
+    margin-right: 15px;
+
+    & .exchange {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+}

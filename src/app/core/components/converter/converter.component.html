@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="container-wrapper">
+    <div class="container-left">
+      <div class="currency-info">
+        <ng-container *ngTemplateOutlet="leftSwitch"></ng-container>
+        <select class="select"
+                [formControl]="currencyGroup.get('leftCurrencyType') | getControl"
+                (change)="changeCurrencyType('left')"
+        >
+          <ng-container *ngFor="let item of currencyArr">
+            <option [value]="item">{{item}}</option>
+          </ng-container>
+        </select>
+      </div>
+      <app-input
+        (click)="changeCurrencyLeft()"
+        [inputControl]="currencyGroup.get('leftValue') | getControl"
+      ></app-input>
+    </div>
+
+    <div class="container-right">
+      <div class="currency-info">
+        <ng-container *ngTemplateOutlet="rightSwitch"></ng-container>
+        <select class="select"
+                [formControl]="currencyGroup.get('rightCurrencyType') | getControl"
+                (change)="changeCurrencyType('right')"
+        >
+          <ng-container *ngFor="let item of currencyArr">
+            <option [value]="item">{{item}}</option>
+          </ng-container>
+        </select>
+
+      </div>
+      <app-input
+        (click)="changeCurrencyRight()"
+        [inputControl]="currencyGroup.get('rightValue') | getControl"
+      ></app-input>
+    </div>
+  </div>
+</div>
+
+<ng-template #leftSwitch>
+  <ng-container [ngSwitch]="currencyGroup.get('leftCurrencyType')?.value">
+    <ng-container *ngSwitchCase="'UAH'">
+      <img src="../../../../assets/icons/ukraine.png" alt="UAH_IMG">
+    </ng-container>
+    <ng-container *ngSwitchCase="'USD'">
+      <img src="../../../../assets/icons/united-states-of-america.png" alt="USD_IMG">
+    </ng-container>
+    <ng-container *ngSwitchCase="'EUR'">
+      <img src="../../../../assets/icons/european-union.png" alt="EUR_IMG">
+    </ng-container>
+    <ng-container *ngSwitchCase="'GBP'">
+      <img src="../../../../assets/icons/united-kingdom.png" alt="GBP_IMG">
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #rightSwitch>
+  <ng-container [ngSwitch]="currencyGroup.get('rightCurrencyType')?.value">
+    <ng-container *ngSwitchCase="'UAH'">
+      <img src="../../../../assets/icons/ukraine.png" alt="UAH_IMG">
+    </ng-container>
+    <ng-container *ngSwitchCase="'USD'">
+      <img src="../../../../assets/icons/united-states-of-america.png" alt="USD_IMG">
+    </ng-container>
+    <ng-container *ngSwitchCase="'EUR'">
+      <img src="../../../../assets/icons/european-union.png" alt="EUR_IMG">
+    </ng-container>
+    <ng-container *ngSwitchCase="'GBP'">
+      <img src="../../../../assets/icons/united-kingdom.png" alt="GBP_IMG">
+    </ng-container>
+  </ng-container>
+</ng-template>
